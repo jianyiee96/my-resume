@@ -51,7 +51,13 @@
         "import/prefer-default-export": "off",
         "react/prop-types": "off",
 
-        "prettier/prettier": ["error"]
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "no-undef": "off"
     },
     "settings": {
         "import/resolver": {
