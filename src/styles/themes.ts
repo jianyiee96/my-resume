@@ -10,7 +10,7 @@ const defaultTheme: DefaultTheme = {
 	},
 	fontColours: {
 		main: '#ffffff',
-		secondary: '#000000',
+		secondary: '#040C0E',
 	},
 };
 

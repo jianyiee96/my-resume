@@ -1,17 +1,15 @@
 import { useEffect, useState, useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
+import MainSectionContent from './section_contents/Main/MainSectionContent';
 import {
-	SubHeaderFade,
 	StyledTabContainer,
 	StyledTabLink,
 	StyledSlider,
 	StyledSection,
 } from './AppStyles';
-import TypeWriter from '../../components/Typewriter/TypeWriter';
 import { defaultTheme } from '../../styles/themes';
 
 const App = (): JSX.Element => {
-	const [mainCompleted, setMainCompleted] = useState<boolean>(false);
 	const [currentTab, setCurrentTab] = useState<
 		HTMLAnchorElement | null | undefined
 	>(null);
@@ -22,15 +20,6 @@ const App = (): JSX.Element => {
 	const refTabs = useRef<Array<HTMLAnchorElement | null>>([]);
 	const refTabsContainer = useRef<HTMLDivElement>(null);
 	const refSlider = useRef<HTMLDivElement>(null);
-
-	type MainPageType = {
-		header: string;
-		subHeader: string;
-	};
-	const mainPageContent: MainPageType = {
-		header: "Hi. I'm Bryan Thum",
-		subHeader: 'Web Developer',
-	};
 
 	type TabType = {
 		id: string;
@@ -142,14 +131,7 @@ const App = (): JSX.Element => {
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<StyledSection ref={refMain}>
-				<TypeWriter
-					text={mainPageContent.header}
-					headerType={1}
-					setCompleted={setMainCompleted}
-				/>
-				<SubHeaderFade className={mainCompleted ? 'visible' : 'hidden'}>
-					{mainPageContent.subHeader}
-				</SubHeaderFade>
+				<MainSectionContent />
 				<StyledTabContainer ref={refTabsContainer} top={tabsTop}>
 					{tabs.map((tab, idx) => (
 						<StyledTabLink

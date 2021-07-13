@@ -22,18 +22,14 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "lint": "eslint ./src/*",
-        "lint:fix": "eslint ./src/* --fix"
+        "prepare": "husky install",
+        "lint": "eslint ./src/**",
+        "lint:fix": "eslint ./src/** --fix"
     },
     "lint-staged": {
         "src/**/*.{js,jsx,ts,tsx}": [
-            "eslint --cache --fix"
+            "npm run lint:fix"
         ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged && pretty-quick --staged"
-        }
     },
     "browserslist": {
         "production": [
