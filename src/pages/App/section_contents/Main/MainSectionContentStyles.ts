@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SubHeaderFade = styled.h2`
+export const SubHeaderContainer = styled.div`
 	&.visible {
 		visibility: visible;
 		opacity: 1;

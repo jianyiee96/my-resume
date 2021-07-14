@@ -11,30 +11,6 @@ const SharedSectionStyle = css`
 	color: ${(props) => props.theme.fontColours.main};
 	text-align: center;
 	padding: 0 2em;
-	h1 {
-		font-size: 2rem;
-		margin: 0;
-		letter-spacing: 1rem;
-	}
-	h2 {
-		font-size: 1.5rem;
-		letter-spacing: 0.5rem;
-		filter: brightness(80%);
-	}
-	h3 {
-		font-size: 1rem;
-		letter-spacing: 0.3rem;
-		opacity: 0.6;
-	}
-
-	@media (min-width: 800px) {
-		h1 {
-			font-size: 3rem;
-		}
-		h2 {
-			font-size: 2rem;
-		}
-	}
 `;
 
 export const StyledSection = styled.section`
@@ -72,7 +48,7 @@ export const StyledTabLink = styled.a`
 	background: ${(props) => props.theme.colours.secondary};
 	letter-spacing: 0.1rem;
 	transition: all 0.5s ease;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	&:hover {
 		color: ${(props) => props.theme.fontColours.secondary};
 		background: ${(props) => props.theme.colours.fifth};
@@ -81,8 +57,8 @@ export const StyledTabLink = styled.a`
 		font-size: 120%;
 	}
 
-	@media (min-width: 800px) {
-		font-size: 1rem;
+	@media (max-width: 800px) {
+		font-size: 0.8rem;
 	}
 `;
 
