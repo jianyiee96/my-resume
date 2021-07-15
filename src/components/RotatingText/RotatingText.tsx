@@ -13,7 +13,9 @@ const RotatingText = ({ preText, items }: RotatingTextProps): JSX.Element => (
 
 				<ul className="list">
 					{items.map((item) => (
-						<li className="item">{item}</li>
+						<li className="item" key={item}>
+							{item}
+						</li>
 					))}
 				</ul>
 			</div>
