@@ -13,31 +13,68 @@ const App = (): JSX.Element => {
 	const refSections = useRef<Array<HTMLElement | null>>([]);
 	const refNavigationContainer = createRef<HTMLDivElement>();
 
-	const checkSectionContainerPositon = (): void => {
+	const checkNavigationToSticky = (): boolean => {
 		const offset =
 			(refMain.current?.offsetTop || 0) +
 			(refMain.current?.clientHeight || 0) -
 			(refNavigationContainer.current?.clientHeight || 0);
 		if (window.pageYOffset <= offset) {
 			setCurrentTabIdx(null);
+			return true;
 		}
+		return false;
 	};
 
 	const checkCurrentTabSelector = (): void => {
-		refSections.current.forEach((el, idx) => {
+		const insideView = (el: HTMLElement | null): number => {
 			const offsetTop =
 				(el?.offsetTop || 0) -
 				(refNavigationContainer.current?.clientHeight || 0);
 			const offsetBottom = offsetTop + (el?.clientHeight || 0);
-			if (window.pageYOffset > offsetTop && window.pageYOffset < offsetBottom) {
-				setCurrentTabIdx(idx);
+			const windowOffsetTop = window.pageYOffset;
+			const windowOffsetBottom = window.pageYOffset + window.innerHeight;
+			if (windowOffsetTop >= offsetTop && windowOffsetTop <= offsetBottom) {
+				return (
+					(Math.min(offsetBottom, windowOffsetBottom) - windowOffsetTop) /
+					window.innerHeight
+				);
 			}
-		});
+
+			if (
+				windowOffsetBottom >= offsetTop &&
+				windowOffsetBottom <= offsetBottom
+			) {
+				return (
+					(windowOffsetBottom - Math.max(offsetTop, windowOffsetTop)) /
+					window.innerHeight
+				);
+			}
+			return 0;
+		};
+		const reduced = refSections.current
+			.map((el, idx) => {
+				const elementInsideView = insideView(el);
+				return {
+					elementInsideView,
+					idx,
+				};
+			})
+			.reduce((o1, o2) => {
+				if (o1.elementInsideView > o2.elementInsideView) {
+					return o1;
+				}
+				return o2;
+			});
+		if (reduced.elementInsideView > 0) {
+			setCurrentTabIdx(reduced.idx);
+		}
 	};
 
 	const handleScrollAndResize = (): void => {
-		checkSectionContainerPositon();
-		checkCurrentTabSelector();
+		const stickyNav = checkNavigationToSticky();
+		if (!stickyNav) {
+			checkCurrentTabSelector();
+		}
 	};
 
 	useEffect(() => {
