@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, createRef } from 'react';
 import { ThemeProvider } from 'styled-components';
-import MainSectionContent from './section_contents/Main/MainSectionContent';
-import { StyledSection } from './AppStyles';
+import MainSectionContent from './section_contents/0_Main/MainSectionContent';
+import { StyledMainSection, StyledSubSection } from './AppStyles';
 import { defaultTheme } from '../../styles/themes';
 import { appContent } from '../../config/content';
 import Navigation from '../../components/Navigation/Navigation';
@@ -49,6 +49,10 @@ const App = (): JSX.Element => {
 					window.innerHeight
 				);
 			}
+
+			if (windowOffsetTop <= offsetTop && windowOffsetBottom >= offsetBottom) {
+				return (offsetBottom - offsetTop) / window.innerHeight;
+			}
 			return 0;
 		};
 		const reduced = refSections.current
@@ -88,28 +92,32 @@ const App = (): JSX.Element => {
 
 	return (
 		<ThemeProvider theme={defaultTheme}>
-			<StyledSection ref={refMain}>
+			<StyledMainSection ref={refMain}>
 				<MainSectionContent />
 				<Navigation
 					ref={refNavigationContainer}
 					appContent={appContent}
 					currentTabIdx={currentTabIdx}
 				/>
-			</StyledSection>
+			</StyledMainSection>
 
 			<main>
-				{appContent.map((tab, idx) => (
-					<StyledSection
-						key={tab.id}
-						ref={(el) => {
-							refSections.current[idx] = el;
-						}}
-						id={tab.id}
-					>
-						<h1>{tab.content}</h1>
-						<h3>{tab.content}</h3>
-					</StyledSection>
-				))}
+				{appContent.map((tab, idx) => {
+					const SectionComponent = tab.component;
+					return (
+						<StyledSubSection
+							key={tab.id}
+							ref={(el) => {
+								refSections.current[idx] = el;
+							}}
+							id={tab.id}
+						>
+							<h1>{tab.content}</h1>
+							<h3>{tab.content}</h3>
+							<SectionComponent />
+						</StyledSubSection>
+					);
+				})}
 			</main>
 		</ThemeProvider>
 	);

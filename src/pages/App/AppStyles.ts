@@ -3,9 +3,6 @@ import styled, { css } from 'styled-components';
 const SharedSectionStyle = css`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
 	position: relative;
 	background: ${(props) => props.theme.colours.secondary};
 	color: ${(props) => props.theme.fontColours.main};
@@ -13,6 +10,16 @@ const SharedSectionStyle = css`
 	padding: 0 2em;
 `;
 
-export const StyledSection = styled.section`
+export const StyledMainSection = styled.section`
 	${SharedSectionStyle}
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+`;
+
+export const StyledSubSection = styled.section`
+	${SharedSectionStyle}
+	justify-content: flex-start;
+	min-height: calc(100vh - 4.5rem);
+	padding-top: 4.5rem;
 `;

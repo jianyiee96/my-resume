@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
 		filter: brightness(80%);
 	}
 	h3 {
-		font-size: 0.8rem;
+		font-size: 1.5rem;
 		letter-spacing: 0.3rem;
 		filter: brightness(60%);
 	}

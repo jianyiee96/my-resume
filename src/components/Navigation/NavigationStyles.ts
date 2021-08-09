@@ -10,7 +10,7 @@ export const StyledTabContainer = styled.div<TabContainerType>`
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 70px;
+	height: 4.5rem;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	background: #fff;
 	z-index: 10;
@@ -41,7 +41,11 @@ export const StyledTabLink = styled.a`
 	}
 
 	@media (max-width: 800px) {
-		font-size: 0.8rem;
+		font-size: 70%;
+		&:hover {
+			font-size: 70%;
+			font-weight: bold;
+		}
 	}
 `;
 

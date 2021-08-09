@@ -45,7 +45,9 @@
                 "allowExpressions": true
             }
         ],
-        "max-len": ["warn", { "code": 100 }],
+        "max-len": ["warn", { "code": 100,
+            "ignorePattern": "^import\\s.+\\sfrom\\s.+;$",
+            "ignoreUrls": true }],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "off",
         "react/require-default-props": "off",
