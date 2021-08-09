@@ -112,9 +112,9 @@ const App = (): JSX.Element => {
 							}}
 							id={tab.id}
 						>
-							<h1>{tab.content}</h1>
-							<h3>{tab.content}</h3>
-							<SectionComponent />
+							<h1>{tab.label}</h1>
+							<h3>{tab.subLabel}</h3>
+							<SectionComponent content={tab.content} />
 						</StyledSubSection>
 					);
 				})}

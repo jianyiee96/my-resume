@@ -20,6 +20,6 @@ export const StyledMainSection = styled.section`
 export const StyledSubSection = styled.section`
 	${SharedSectionStyle}
 	justify-content: flex-start;
-	min-height: calc(100vh - 4.5rem);
-	padding-top: 4.5rem;
+	min-height: calc(100vh - 7.5rem);
+	padding-top: calc(4.5rem + 3rem);
 `;

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { device } from './config/display';
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -9,10 +10,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Century Gothic", 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
   }
   a {
 	  text-decoration: none;
@@ -33,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
 		filter: brightness(60%);
 	}
 
-	@media (max-width: 800px) {
+	@media ${device.tablet} {
 		h1 {
 			font-size: 2rem;
 		}

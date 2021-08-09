@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { device } from '../../config/display';
 
 const opacityAnimation = keyframes`
     0%, 100% {opacity:0;}
@@ -58,25 +59,15 @@ export const StyledRotatingText = styled.div`
 		}
 	}
 
-	@media (max-width: 800px) {
+	@media ${device.tablet} {
 		.container {
-			height: 1.8rem;
-
-			.text {
-				margin: 0 1rem 0 0;
-			}
-		}
-	}
-
-	@media (max-width: 670px) {
-		.container {
-			height: 1.3rem;
+			height: 2rem;
 			padding: 0 1rem;
 			.text {
 				margin: 0 0.8rem 0 0;
 			}
 			letter-spacing: 0.1rem;
-			font-size: 1rem;
+			font-size: 1.3rem;
 		}
 	}
 `;

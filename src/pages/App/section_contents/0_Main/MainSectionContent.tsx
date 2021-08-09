@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import TypeWriter from '../../../../components/TypeWriter/TypeWriter';
 import { SubHeaderContainer } from './MainSectionContentStyles';
-import RotatingText from '../../../../components/RotatingText/RotatingText';
+import RotatingText, {
+	RotatingTextProps,
+} from '../../../../components/RotatingText/RotatingText';
 import { mainPageContent } from '../../../../config/content';
+
+export type MainContentType = {
+	typingTextContent: string;
+	rotatingTextContent: RotatingTextProps;
+};
 
 const MainSectionContent = (): JSX.Element => {
 	const [mainCompleted, setMainCompleted] = useState<boolean>(false);

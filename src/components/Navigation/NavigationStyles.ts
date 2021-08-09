@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../config/display';
 
 type TabContainerType = {
 	top?: boolean;
@@ -40,7 +41,7 @@ export const StyledTabLink = styled.a`
 		font-size: 120%;
 	}
 
-	@media (max-width: 800px) {
+	@media ${device.tablet} {
 		font-size: 70%;
 		&:hover {
 			font-size: 70%;
