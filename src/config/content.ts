@@ -1,9 +1,20 @@
 /* eslint-disable max-len */
+import { FaReact, FaJava, FaHtml5, FaPython } from 'react-icons/fa';
+import { DiAndroid } from 'react-icons/di';
+import { IoLogoJavascript, IoLogoCss3 } from 'react-icons/io';
+import {
+	SiTypescript,
+	SiSpring,
+	SiMicrosoftexcel as Excel,
+} from 'react-icons/si';
+import { GoDatabase } from 'react-icons/go';
 import { MainContentType } from '../pages/App/section_contents/0_Main/MainSectionContent';
 import AboutSectionContent, {
 	AboutSectionContentType,
 } from '../pages/App/section_contents/1_About/AboutSectionContent';
-import SkillsetsSectionContent from '../pages/App/section_contents/2_Skillsets/SkillsetsSectionContent';
+import SkillsetsSectionContent, {
+	SkillsetsSectionContentType,
+} from '../pages/App/section_contents/2_Skillsets/SkillsetsSectionContent';
 import ExperienceSectionContent from '../pages/App/section_contents/3_Experience/ExperienceSectionContent';
 import ProjectsSectionContent from '../pages/App/section_contents/4_Projects/ProjectsSectionContent';
 import OthersSectionContent from '../pages/App/section_contents/5_Others/OthersSectionContent';
@@ -17,7 +28,10 @@ export const mainPageContent: MainContentType = {
 	},
 };
 
-type BaseContentType = AboutSectionContentType | undefined;
+type BaseContentType =
+	| AboutSectionContentType
+	| SkillsetsSectionContentType
+	| undefined;
 
 export type ComponentPropType = {
 	content: BaseContentType;
@@ -73,6 +87,118 @@ export const appContent: ContentSectionType[] = [
 		id: 'tab-skillsets',
 		label: 'Skillsets',
 		subLabel: 'Skillsets',
+		content: {
+			charts: [
+				{
+					chartInfo: {
+						id: 'react',
+						label: 'React',
+						percentage: 0.7,
+						color: '#61DBFB',
+						Icon: FaReact,
+					},
+				},
+				{
+					chartInfo: {
+						id: 'java',
+						label: 'Java',
+						percentage: 0.5,
+						color: '#f89820',
+						Icon: FaJava,
+						iconWidth: '50%',
+					},
+				},
+				{
+					chartInfo: {
+						id: 'android',
+						label: 'Android',
+						percentage: 0.8,
+						color: '#a4c639',
+						Icon: DiAndroid,
+						iconWidth: '50%',
+					},
+				},
+				{
+					chartInfo: {
+						id: 'javascript',
+						label: 'JavaScript',
+						percentage: 0.5,
+						color: '#F0DB4F',
+						Icon: IoLogoJavascript,
+					},
+				},
+				{
+					chartInfo: {
+						id: 'typescript',
+						label: 'TypeScript',
+						percentage: 0.8,
+						color: '#007acc',
+						Icon: SiTypescript,
+						iconWidth: '45%',
+						iconMarginTop: '1.3rem',
+					},
+				},
+				{
+					chartInfo: {
+						id: 'spring',
+						label: 'Spring',
+						percentage: 0.8,
+						color: '#6db33f',
+						Icon: SiSpring,
+						iconWidth: '50%',
+						iconMarginTop: '0.9rem',
+					},
+				},
+				{
+					chartInfo: {
+						id: 'sql',
+						label: 'SQL',
+						percentage: 0.8,
+						color: '#feb300',
+						Icon: GoDatabase,
+						iconWidth: '50%',
+					},
+				},
+				{
+					chartInfo: {
+						id: 'python',
+						label: 'Python',
+						percentage: 0.5,
+						color: '#4B8BBE',
+						Icon: FaPython,
+					},
+				},
+				{
+					chartInfo: {
+						id: 'html',
+						label: 'HTML5',
+						percentage: 0.8,
+						color: '#e34c26',
+						Icon: FaHtml5,
+					},
+				},
+				{
+					chartInfo: {
+						id: 'css',
+						label: 'CSS3',
+						percentage: 0.8,
+						color: '#2965f1',
+						Icon: IoLogoCss3,
+					},
+				},
+				{
+					chartInfo: {
+						id: 'excel',
+						label: 'Excel',
+						percentage: 0.8,
+						color: '#1D6F42',
+						Icon: Excel,
+						iconWidth: '45%',
+						iconMarginTop: '1.1rem',
+					},
+				},
+			],
+		},
 		component: SkillsetsSectionContent,
 	},
 	{

@@ -31,10 +31,10 @@ const AboutSectionContent = ({ content }: ComponentPropType): JSX.Element => {
 	}): JSX.Element => (
 		<>
 			{listItems.map((listItem) => (
-				<StyledItemsContainer className={className}>
+				<StyledItemsContainer className={className} key={listItem.header}>
 					<h2>{listItem.header}</h2>
 					{listItem.items.map((item) => (
-						<StyledListItem faUnicode={item.faUnicode}>
+						<StyledListItem faUnicode={item.faUnicode} key={item.name}>
 							{item.name}
 						</StyledListItem>
 					))}
@@ -50,7 +50,7 @@ const AboutSectionContent = ({ content }: ComponentPropType): JSX.Element => {
 			</StyledImgContainer>
 			<StyledTextContainer>
 				{paragraphs.map((text) => (
-					<p>{text}</p>
+					<p key={text}>{text}</p>
 				))}
 				<AdditionalInfo className="inner" />
 			</StyledTextContainer>
