@@ -41,4 +41,16 @@ export const GlobalStyle = createGlobalStyle`
 			font-size: 1rem;
 		}
 	}
+	
+	@media ${device.mobileM} {
+		h1 {
+			font-size: 1.5rem;
+		}
+		h2 {
+			font-size: 1rem;
+		}
+		h3 {
+			font-size: 0.8rem;
+		}
+	}
 `;

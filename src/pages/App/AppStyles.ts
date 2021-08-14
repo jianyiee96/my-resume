@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { device } from '../../config/display';
 
 const SharedSectionStyle = css`
 	display: flex;
@@ -22,4 +23,9 @@ export const StyledSubSection = styled.section`
 	justify-content: flex-start;
 	min-height: calc(100vh - 7.5rem);
 	padding-top: calc(4.5rem + 3rem);
+	word-break: break-word;
+
+	@media ${device.mobileL} {
+		padding-top: 4rem;
+	} ;
 `;

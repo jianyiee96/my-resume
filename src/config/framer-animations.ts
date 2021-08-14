@@ -22,3 +22,27 @@ export const animateAppearVariants = {
 	original: { opacity: 1 },
 	hidden: { opacity: 0 },
 };
+
+export const animateUpDownMenuVariants = {
+	orginal: {
+		y: 0,
+		transition: {
+			stiffness: 75,
+			type: 'spring',
+		},
+	},
+	hidden: {
+		y: -100,
+	},
+};
+
+export const animateLTRMenuVariants = {
+	original: {
+		x: 0,
+		transition: { type: 'Tween', stiffness: 100, duration: 0.5 },
+	},
+	left: {
+		x: -300,
+		transition: { type: 'Tween', stiffness: 100, duration: 0.5 },
+	},
+};
