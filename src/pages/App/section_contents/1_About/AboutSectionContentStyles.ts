@@ -33,18 +33,19 @@ export const StyledImg = styled.img`
 
 export const StyledTextContainer = styled.div`
 	flex: 1 1 70%;
-	padding: 0 2rem;
+	padding: 0 4rem;
 	line-height: 1.5;
 	font-size: 1.5rem;
 	text-align: justify;
 	p:first-of-type {
 		margin-top: 0;
 	}
-	@media ${device.laptop} {
-		flex: 1 1 50%;
-	}
 	@media ${device.laptopL} {
 		font-size: 1.3rem;
+	}
+	@media ${device.laptop} {
+		padding: 0 2rem;
+		flex: 1 1 50%;
 	}
 	@media ${device.tablet} {
 		font-size: 1rem;

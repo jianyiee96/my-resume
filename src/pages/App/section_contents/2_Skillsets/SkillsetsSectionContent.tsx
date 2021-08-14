@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { IconType } from 'react-icons';
-import SkillDonutChart from '../../../../components/SkillDonutChart/SkillDonutChart';
+import { AnimateSharedLayout } from 'framer-motion';
+import SkillDonutChart, {
+	ChartInfoType,
+	DescInfoType,
+} from '../../../../components/SkillDonutChart/SkillDonutChart';
 import {
 	StyledSkillsetsSectionContainer,
 	StyledSkillsetContainer,
@@ -10,15 +13,8 @@ import { ComponentPropType } from '../../../../config/content';
 
 export type SkillsetsSectionContentType = {
 	charts: {
-		chartInfo: {
-			id: string;
-			label: string;
-			percentage: number;
-			color: string;
-			Icon: IconType;
-			iconWidth?: string;
-			iconMarginTop?: string;
-		};
+		chartInfo: ChartInfoType;
+		descInfo: DescInfoType;
 	}[];
 };
 
@@ -39,26 +35,28 @@ const SkillsetsSectionContent = ({
 		}
 	};
 	return (
-		<StyledSkillsetsSectionContainer ref={ref}>
-			{inView &&
-				charts.map((item, idx) => {
-					const { chartInfo } = item;
-					return (
-						<StyledSkillsetContainer key={chartInfo.id}>
-							<SkillDonutChart
-								label={chartInfo.label}
-								percentage={chartInfo.percentage}
-								color={chartInfo.color}
-								icon={chartInfo.Icon}
-								iconWidth={chartInfo.iconWidth}
-								iconMarginTop={chartInfo.iconMarginTop}
-								active={activeSkillsetIdx === idx}
-								onClick={() => skillsetOnClickHandler(idx)}
-							/>
-						</StyledSkillsetContainer>
-					);
-				})}
-		</StyledSkillsetsSectionContainer>
+		<AnimateSharedLayout>
+			<StyledSkillsetsSectionContainer ref={ref} layout>
+				{inView &&
+					charts.map((item, idx) => {
+						const { chartInfo, descInfo } = item;
+						return (
+							<StyledSkillsetContainer
+								layout
+								key={chartInfo.id}
+								aria-label="skillset-container"
+							>
+								<SkillDonutChart
+									chartInfo={chartInfo}
+									descInfo={descInfo}
+									active={activeSkillsetIdx === idx}
+									onClick={() => skillsetOnClickHandler(idx)}
+								/>
+							</StyledSkillsetContainer>
+						);
+					})}
+			</StyledSkillsetsSectionContainer>
+		</AnimateSharedLayout>
 	);
 };
 

@@ -1,6 +1,91 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { device } from '../../config/display';
 
-export const ChartContainer = styled.div<{
+export const DescriptionContainer = styled(motion.div)`
+	text-align: left;
+	margin-left: 5rem;
+`;
+
+export const DescriptionHeader = styled.p<{
+	color: string;
+}>`
+	color: ${({ color }) => color};
+	padding: 1rem 0.5rem 0.5rem 1rem;
+	filter: brightness(120%);
+	font-weight: bold;
+	letter-spacing: 0.1rem;
+	white-space: nowrap;
+
+	background-image: ${({ color }) =>
+		`linear-gradient(to right, ${color}, ${color})`};
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	background-size: 100% 2px;
+	&:before {
+		content: '';
+		left: -7px;
+		top: 4.4px;
+		height: 2.5rem;
+		position: absolute;
+		border-left: ${({ color }) => `solid 2px ${color}`};
+		transform: rotate(-20deg);
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		left: -16px;
+		top: 2.5px;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background-color: ${({ color }) => color};
+	}
+`;
+
+export const DescriptionText = styled.p`
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+	padding-left: 2rem;
+	word-wrap: break-word;
+	&:before {
+		content: '•';
+		position: absolute;
+		margin-right: 1rem;
+		left: 0;
+	}
+`;
+
+export const Wrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	@media ${device.tablet} {
+		align-items: center;
+		${DescriptionContainer} {
+			margin-left: 0;
+		}
+		${DescriptionHeader} {
+			text-align: center;
+			&:before,
+			&:after {
+				content: none;
+			}
+		}
+	}
+`;
+
+export const PieChartLabel = styled(motion.p)`
+	font-size: 1rem;
+	line-height: 1.2;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	margin-bottom: 1.2rem;
+`;
+export const ChartContainer = styled(motion.div)<{
 	color: string;
 	iconWidth?: string | undefined;
 	iconMarginTop?: string | undefined;
@@ -17,9 +102,11 @@ export const ChartContainer = styled.div<{
 			filter: brightness(70%);
 		}
 	}
+	${PieChartLabel} {
+		color: ${({ color }) => color};
+	}
 	&:hover,
 	&.active {
-		transform: scale(120%);
 		svg path {
 			&:first-of-type {
 				filter: brightness(30%);
@@ -36,30 +123,6 @@ export const ChartContainer = styled.div<{
 			margin-top: ${({ iconMarginTop }) => iconMarginTop || '0.7rem'};
 			transition: margin-top 200ms linear, transform 200ms linear;
 		}
-		p {
-			visibility: visible;
-			font-size: 1rem;
-			line-height: 1.2;
-			display: block;
-			color: ${({ color }) => color};
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			margin: auto;
-			margin-bottom: 1.2rem;
-			height: auto;
-			opacity: 1;
-			transition: opacity 200ms ease-in 200ms;
-		}
-	}
-
-	p {
-		visibility: hidden;
-		opacity: 0;
-		height: 0;
-		margin: 0;
-		transition: opacity 200ms ease-in;
 	}
 	svg.chart-icon {
 		position: absolute;
@@ -70,7 +133,6 @@ export const ChartContainer = styled.div<{
 		top: 0;
 		bottom: 0;
 		height: auto;
-		width: 55%;
 		width: ${({ iconWidth }) => iconWidth || '55%'};
 		transition: margin-top 200ms linear 200ms, transform 200ms linear 200ms;
 	}

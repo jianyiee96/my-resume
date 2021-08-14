@@ -86,115 +86,200 @@ export const appContent: ContentSectionType[] = [
 	{
 		id: 'tab-skillsets',
 		label: 'Skillsets',
-		subLabel: 'Skillsets',
+		subLabel: 'My Skills',
 		content: {
 			charts: [
 				{
 					chartInfo: {
 						id: 'react',
 						label: 'React',
-						percentage: 0.7,
+						percentage: 70,
 						color: '#61DBFB',
 						Icon: FaReact,
+					},
+					descInfo: {
+						label: 'Competent • Strong Interest',
+						items: [
+							'Developed resume website',
+							'Acquired industry experience',
+							'Continuing to develop further',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'java',
 						label: 'Java',
-						percentage: 0.5,
+						percentage: 85,
 						color: '#f89820',
 						Icon: FaJava,
 						iconWidth: '50%',
+					},
+					descInfo: {
+						label: 'Proficient • Confident',
+						items: [
+							'Most experience with this language',
+							'Developed multiple projects using JAVA EE',
+							'Tutoring experience for undergraduates',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'android',
 						label: 'Android',
-						percentage: 0.8,
+						percentage: 60,
 						color: '#a4c639',
 						Icon: DiAndroid,
 						iconWidth: '50%',
+					},
+					descInfo: {
+						label: 'Competent • Past Experience',
+						items: [
+							'Developed multiple projects',
+							'Kotlin and Java',
+							'QR Code Scanner',
+							'Google Location Service',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'javascript',
 						label: 'JavaScript',
-						percentage: 0.5,
+						percentage: 50,
 						color: '#F0DB4F',
 						Icon: IoLogoJavascript,
+					},
+					descInfo: {
+						label: 'Adequate • Fundamentals',
+						items: [
+							'Mainly with ReactJS',
+							'Still picking up on syntax and principles',
+							'Understanding of Event Loop, Promises',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'typescript',
 						label: 'TypeScript',
-						percentage: 0.8,
+						percentage: 55,
 						color: '#007acc',
 						Icon: SiTypescript,
 						iconWidth: '45%',
 						iconMarginTop: '1.3rem',
+					},
+					descInfo: {
+						label: 'Adequate • Learning',
+						items: [
+							'Developed multiple projects',
+							'Still picking up on syntax and principles',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'spring',
 						label: 'Spring',
-						percentage: 0.8,
+						percentage: 60,
 						color: '#6db33f',
 						Icon: SiSpring,
 						iconWidth: '50%',
 						iconMarginTop: '0.9rem',
+					},
+					descInfo: {
+						label: 'Competent • Learning',
+						items: [
+							'PostgreSQL, MySQL',
+							'Spring Boot',
+							'Unit test cases, Validation, JPA',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'sql',
 						label: 'SQL',
-						percentage: 0.8,
+						percentage: 50,
 						color: '#feb300',
 						Icon: GoDatabase,
 						iconWidth: '50%',
+					},
+					descInfo: {
+						label: 'Adequate • Learning',
+						items: [
+							'Project A with 5 group memebers',
+							'Still picking up on syntax and principles',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'python',
 						label: 'Python',
-						percentage: 0.5,
+						percentage: 60,
 						color: '#4B8BBE',
 						Icon: FaPython,
+					},
+					descInfo: {
+						label: 'Competent • Learning',
+						items: [
+							'Python Flask',
+							'Developed multiple projects and assignments',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'html',
 						label: 'HTML5',
-						percentage: 0.8,
+						percentage: 70,
 						color: '#e34c26',
 						Icon: FaHtml5,
+					},
+					descInfo: {
+						label: 'Competent • Strong Interest',
+						items: [
+							'Developed multiple projects',
+							'Continuing to develop further',
+							'Creating own reusable components',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'css',
 						label: 'CSS3',
-						percentage: 0.8,
+						percentage: 70,
 						color: '#2965f1',
 						Icon: IoLogoCss3,
+					},
+					descInfo: {
+						label: 'Competent • Strong Interest',
+						items: [
+							'Styled Components',
+							'Developed multiple projects',
+							'Continuing to develop further',
+						],
 					},
 				},
 				{
 					chartInfo: {
 						id: 'excel',
 						label: 'Excel',
-						percentage: 0.8,
+						percentage: 90,
 						color: '#1D6F42',
 						Icon: Excel,
 						iconWidth: '45%',
 						iconMarginTop: '1.1rem',
+					},
+					descInfo: {
+						label: 'Proficient • Past Experience',
+						items: [
+							'Very familiar with Excel & VBA',
+							'Spearheaded and proposed multiple macros to eliminate manual labour',
+						],
 					},
 				},
 			],
