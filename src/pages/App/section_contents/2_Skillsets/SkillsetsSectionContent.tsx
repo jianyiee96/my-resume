@@ -37,24 +37,26 @@ const SkillsetsSectionContent = ({
 	return (
 		<AnimateSharedLayout>
 			<StyledSkillsetsSectionContainer ref={ref} layout>
-				{inView &&
-					charts.map((item, idx) => {
-						const { chartInfo, descInfo } = item;
-						return (
-							<StyledSkillsetContainer
-								layout
-								key={chartInfo.id}
-								aria-label="skillset-container"
-							>
-								<SkillDonutChart
-									chartInfo={chartInfo}
-									descInfo={descInfo}
-									active={activeSkillsetIdx === idx}
-									onClick={() => skillsetOnClickHandler(idx)}
-								/>
-							</StyledSkillsetContainer>
-						);
-					})}
+				{charts.map((item, idx) => {
+					const { chartInfo, descInfo } = item;
+					return (
+						<StyledSkillsetContainer
+							layout
+							key={chartInfo.id}
+							aria-label="skillset-container"
+						>
+							<SkillDonutChart
+								chartInfo={{
+									...chartInfo,
+									percentage: inView ? chartInfo.percentage : 0,
+								}}
+								descInfo={descInfo}
+								active={activeSkillsetIdx === idx}
+								onClick={() => skillsetOnClickHandler(idx)}
+							/>
+						</StyledSkillsetContainer>
+					);
+				})}
 			</StyledSkillsetsSectionContainer>
 		</AnimateSharedLayout>
 	);
