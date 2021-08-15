@@ -38,7 +38,7 @@ export const StyledMobileNavigationContainer = styled(motion.div)`
 	overflow-x: hidden;
 `;
 
-export const StyledMobileTabLink = styled.a`
+export const StyledMobileTabLink = styled(motion.a)`
 	color: ${({ theme }) => theme.fontColours.main};
 	padding: 0.5rem 2rem 0.5rem 1rem;
 	text-align: left;
@@ -56,7 +56,7 @@ export const StyledMobileTabLink = styled.a`
 	}
 `;
 
-export const StyledCloseButtonContainer = styled.p`
+export const StyledCloseButtonContainer = styled(motion.p)`
 	position: absolute;
 	top: 0;
 	right: 0;

@@ -33,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 	@media ${device.tablet} {
 		h1 {
 			font-size: 2rem;
+			letter-spacing: 0.6rem;
 		}
 		h2 {
 			font-size: 1.5rem;
@@ -45,6 +46,7 @@ export const GlobalStyle = createGlobalStyle`
 	@media ${device.mobileM} {
 		h1 {
 			font-size: 1.5rem;
+			letter-spacing: 0.4rem;
 		}
 		h2 {
 			font-size: 1rem;

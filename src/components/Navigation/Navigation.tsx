@@ -137,12 +137,23 @@ const Navigation: React.ForwardRefRenderFunction<
 									<>
 										<StyledMobileNavigationContainer
 											aria-label="mobile-menu"
-											initial={animateLTRMenuVariants.left}
-											animate={animateLTRMenuVariants.original}
-											exit={animateLTRMenuVariants.left}
+											variants={animateLTRMenuVariants}
+											initial="left"
+											animate="original"
+											exit="left"
 										>
 											<StyledCloseButtonContainer
 												onClick={() => setShowMobileMenu(false)}
+												variants={{
+													left: { x: 100, opacity: 0 },
+													original: {
+														x: 0,
+														opacity: 1,
+														transition: {
+															delay: 1,
+														},
+													},
+												}}
 											>
 												<IoCloseSharp size={20} />
 											</StyledCloseButtonContainer>
@@ -151,6 +162,16 @@ const Navigation: React.ForwardRefRenderFunction<
 													key={tab.id}
 													href={`#${tab.id}`}
 													onClick={() => setShowMobileMenu(false)}
+													variants={{
+														left: { x: -500 },
+														original: (i) => ({
+															x: 0,
+															transition: {
+																delay: i * 0.1 + 0.3,
+															},
+														}),
+													}}
+													custom={idx}
 													// eslint-disable-next-line max-len
 													className={currentTabIdx === idx ? 'active' : ''}
 												>
