@@ -1,7 +1,11 @@
 import { useEffect, useState, useRef, createRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 import MainSectionContent from './section_contents/0_Main/MainSectionContent';
-import { StyledMainSection, StyledSubSection } from './AppStyles';
+import {
+	StyledAppContainer,
+	StyledMainSection,
+	StyledSubSection,
+} from './AppStyles';
 import { defaultTheme } from '../../styles/themes';
 import { appContent } from '../../config/content';
 import Navigation from '../../components/Navigation/Navigation';
@@ -93,38 +97,40 @@ const App = (): JSX.Element => {
 
 	return (
 		<ThemeProvider theme={defaultTheme}>
-			<StyledMainSection ref={refMain}>
-				<MainSectionContent
-					mainCompleted={mainCompleted}
-					setMainCompleted={setMainCompleted}
+			<StyledAppContainer>
+				<StyledMainSection ref={refMain}>
+					<MainSectionContent
+						mainCompleted={mainCompleted}
+						setMainCompleted={setMainCompleted}
+					/>
+				</StyledMainSection>
+				<Navigation
+					ref={refNavigationContainer}
+					appContent={appContent}
+					currentTabIdx={currentTabIdx}
+					animateTrigger={mainCompleted}
 				/>
-			</StyledMainSection>
-			<Navigation
-				ref={refNavigationContainer}
-				appContent={appContent}
-				currentTabIdx={currentTabIdx}
-				animateTrigger={mainCompleted}
-			/>
-			{mainCompleted && (
-				<main>
-					{appContent.map((tab, idx) => {
-						const SectionComponent = tab.component;
-						return (
-							<StyledSubSection
-								key={tab.id}
-								ref={(el) => {
-									refSections.current[idx] = el;
-								}}
-								id={tab.id}
-							>
-								<h1>{tab.label}</h1>
-								<h3>{tab.subLabel}</h3>
-								<SectionComponent content={tab.content} />
-							</StyledSubSection>
-						);
-					})}
-				</main>
-			)}
+				{mainCompleted && (
+					<main>
+						{appContent.map((tab, idx) => {
+							const SectionComponent = tab.component;
+							return (
+								<StyledSubSection
+									key={tab.id}
+									ref={(el) => {
+										refSections.current[idx] = el;
+									}}
+									id={tab.id}
+								>
+									<h1>{tab.label}</h1>
+									<h3>{tab.subLabel}</h3>
+									<SectionComponent content={tab.content} />
+								</StyledSubSection>
+							);
+						})}
+					</main>
+				)}
+			</StyledAppContainer>
 		</ThemeProvider>
 	);
 };
