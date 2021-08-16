@@ -8,10 +8,10 @@ export const StyledMobileMenu = styled.div`
 	top: 0;
 	z-index: 1;
 	width: 100%;
-	height: 3rem;
 	display: flex;
 	align-items: center;
-	padding-left: 3rem;
+	padding-left: 2rem;
+	padding-top: 1.5rem;
 	background: ${({ theme }) => theme.colours.secondary};
 	color: ${(props) => props.theme.fontColours.main};
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -61,41 +61,37 @@ export const StyledCloseButtonContainer = styled(motion.p)`
 	top: 0;
 	right: 0;
 	margin: 1rem;
+	color: ${({ theme }) => theme.fontColours.main};
 `;
 
-export const StyledTabContainer = styled.div<{ top?: boolean }>`
+export const StyledTabContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+	position: sticky;
+	top: 0;
+	width: 100vw;
 	height: 4.5rem;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	z-index: 10;
-	${({ top }) =>
-		top &&
-		`
-			position: fixed;
-			top: 0;
-		`}
+	background-color: ${({ theme }) => theme.colours.secondary};
 `;
 
-export const StyledTabLink = styled.a`
+export const StyledTabLink = styled(motion.a)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex: 1;
-	color: ${(props) => props.theme.fontColours.main};
-	background: ${(props) => props.theme.colours.secondary};
+	color: ${({ theme }) => theme.fontColours.main};
+	background: ${({ theme }) => theme.colours.secondary};
 	letter-spacing: 0.1rem;
-	transition: all 0.5s ease;
 	font-size: 1rem;
+	text-align: center;
 	&:hover {
-		color: ${(props) => props.theme.fontColours.secondary};
-		background: ${(props) => props.theme.colours.fifth};
+		color: ${({ theme }) => darken(0.05, theme.fontColours.main)};
+		background: ${({ theme }) => theme.colours.fifth};
 		transition: all 0.6s ease;
 		font-weight: bold;
-		font-size: 120%;
+		font-size: 105%;
 	}
 
 	@media ${device.tablet} {

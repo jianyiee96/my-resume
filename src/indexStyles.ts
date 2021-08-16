@@ -4,6 +4,12 @@ import { device } from './config/display';
 export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
+	overflow: scroll;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
   }
   body {
     margin: 0;

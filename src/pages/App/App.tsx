@@ -12,6 +12,7 @@ const App = (): JSX.Element => {
 	const refMain = useRef<HTMLDivElement>(null);
 	const refSections = useRef<Array<HTMLElement | null>>([]);
 	const refNavigationContainer = createRef<HTMLDivElement>();
+	const [mainCompleted, setMainCompleted] = useState<boolean>(false);
 
 	const checkNavigationToSticky = (): boolean => {
 		const offset =
@@ -93,32 +94,37 @@ const App = (): JSX.Element => {
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<StyledMainSection ref={refMain}>
-				<MainSectionContent />
-				<Navigation
-					ref={refNavigationContainer}
-					appContent={appContent}
-					currentTabIdx={currentTabIdx}
+				<MainSectionContent
+					mainCompleted={mainCompleted}
+					setMainCompleted={setMainCompleted}
 				/>
 			</StyledMainSection>
-
-			<main>
-				{appContent.map((tab, idx) => {
-					const SectionComponent = tab.component;
-					return (
-						<StyledSubSection
-							key={tab.id}
-							ref={(el) => {
-								refSections.current[idx] = el;
-							}}
-							id={tab.id}
-						>
-							<h1>{tab.label}</h1>
-							<h3>{tab.subLabel}</h3>
-							<SectionComponent content={tab.content} />
-						</StyledSubSection>
-					);
-				})}
-			</main>
+			<Navigation
+				ref={refNavigationContainer}
+				appContent={appContent}
+				currentTabIdx={currentTabIdx}
+				animateTrigger={mainCompleted}
+			/>
+			{mainCompleted && (
+				<main>
+					{appContent.map((tab, idx) => {
+						const SectionComponent = tab.component;
+						return (
+							<StyledSubSection
+								key={tab.id}
+								ref={(el) => {
+									refSections.current[idx] = el;
+								}}
+								id={tab.id}
+							>
+								<h1>{tab.label}</h1>
+								<h3>{tab.subLabel}</h3>
+								<SectionComponent content={tab.content} />
+							</StyledSubSection>
+						);
+					})}
+				</main>
+			)}
 		</ThemeProvider>
 	);
 };

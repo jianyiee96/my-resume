@@ -15,7 +15,11 @@ export const StyledMainSection = styled.section`
 	${SharedSectionStyle}
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: calc(100vh - 4.5rem);
+
+	@media ${device.mobileL} {
+		min-height: 100vh;
+	}
 `;
 
 export const StyledSubSection = styled.section`

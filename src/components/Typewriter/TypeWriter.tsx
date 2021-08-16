@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { StyledSpan } from './TypeWriterStyles';
+import styled, { keyframes } from 'styled-components';
+import { motion } from 'framer-motion';
 
 type TypeWriterProps = {
 	text: string;
@@ -37,7 +38,7 @@ const TypeWriter = ({
 	}, [idx, text, setCompleted]);
 
 	return (
-		<>
+		<StyledContainer layout="position">
 			<Header>
 				<StyledSpan style={{ visibility: 'hidden' }} />
 				{displayText}
@@ -46,8 +47,24 @@ const TypeWriter = ({
 					style={{ visibility: completed ? 'hidden' : 'visible' }}
 				/>
 			</Header>
-		</>
+		</StyledContainer>
 	);
 };
 
 export default TypeWriter;
+
+const StyledContainer = styled(motion.div)`
+	width: 100%;
+`;
+
+const caretAnimation = keyframes`
+50% {
+	border-color: transparent;
+}
+`;
+
+const StyledSpan = styled(motion.span)`
+	border-right: 0.05em solid;
+	border-color: ${(props) => props.theme.fontColours.main};
+	animation: ${caretAnimation} 1s steps(1) infinite;
+`;

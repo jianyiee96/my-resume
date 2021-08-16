@@ -24,20 +24,20 @@ import {
 type NavigationPropsType = {
 	currentTabIdx: number | null;
 	appContent: ContentSectionType[];
+	animateTrigger?: boolean;
 };
 
 const Navigation: React.ForwardRefRenderFunction<
 	HTMLDivElement,
 	NavigationPropsType
 > = (
-	{ currentTabIdx, appContent }: NavigationPropsType,
+	{ currentTabIdx, appContent, animateTrigger = true }: NavigationPropsType,
 	refTabsContainer
 ): JSX.Element => {
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
 	const [showMobileMenuIcon, setShowMobileMenuIcon] = useState(true);
 	const refTabs = useRef<Array<HTMLAnchorElement | null>>([]);
 	const refSlider = useRef<HTMLDivElement>(null);
-	const stickyTabsTop = currentTabIdx !== null;
 	const refBackdrop = useRef<HTMLDivElement>(null);
 
 	const handleSlider = (): void => {
@@ -119,7 +119,7 @@ const Navigation: React.ForwardRefRenderFunction<
 					matches.mobile ? (
 						<>
 							<AnimatePresence>
-								{showMobileMenuIcon && (
+								{animateTrigger && showMobileMenuIcon && (
 									<StyledMobileMenu aria-label="collapased-menu">
 										<StyledHamburgerContainer
 											onClick={() => setShowMobileMenu(true)}
@@ -185,19 +185,35 @@ const Navigation: React.ForwardRefRenderFunction<
 							</AnimatePresence>
 						</>
 					) : (
-						<StyledTabContainer top={stickyTabsTop} ref={refTabsContainer}>
-							{appContent.map((tab, idx) => (
-								<StyledTabLink
-									key={tab.id}
-									href={`#${tab.id}`}
-									ref={(el) => {
-										refTabs.current[idx] = el;
-									}}
-									onClick={handleClick}
-								>
-									{tab.label}
-								</StyledTabLink>
-							))}
+						<StyledTabContainer ref={refTabsContainer}>
+							{animateTrigger &&
+								appContent.map((tab, idx) => (
+									<StyledTabLink
+										key={tab.id}
+										href={`#${tab.id}`}
+										ref={(el) => {
+											refTabs.current[idx] = el;
+										}}
+										onClick={handleClick}
+										variants={{
+											initial: { opacity: 0, y: 100 },
+											animate: {
+												y: 0,
+												opacity: 1,
+												transition: {
+													delay: 0.5,
+													type: 'spring',
+													bounce: 0.5,
+													duration: 1,
+												},
+											},
+										}}
+										initial="initial"
+										animate={animateTrigger ? 'animate' : 'initial'}
+									>
+										{tab.label}
+									</StyledTabLink>
+								))}
 							<StyledSlider ref={refSlider} />
 						</StyledTabContainer>
 					)

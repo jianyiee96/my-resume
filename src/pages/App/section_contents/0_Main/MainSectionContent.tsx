@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import TypeWriter from '../../../../components/TypeWriter/TypeWriter';
+import { AnimateSharedLayout } from 'framer-motion';
+import TypeWriter from '../../../../components/Typewriter/TypeWriter';
 import { SubHeaderContainer } from './MainSectionContentStyles';
 import RotatingText, {
 	RotatingTextProps,
@@ -11,26 +11,28 @@ export type MainContentType = {
 	rotatingTextContent: RotatingTextProps;
 };
 
-const MainSectionContent = (): JSX.Element => {
-	const [mainCompleted, setMainCompleted] = useState<boolean>(false);
-
-	return (
-		<>
-			<TypeWriter
-				text={mainPageContent.typingTextContent}
-				headerType={1}
-				setCompleted={setMainCompleted}
-			/>
-			<SubHeaderContainer className={mainCompleted ? 'visible' : 'hidden'}>
-				{mainCompleted && (
-					<RotatingText
-						preText={mainPageContent.rotatingTextContent.preText}
-						items={mainPageContent.rotatingTextContent.items}
-					/>
-				)}
-			</SubHeaderContainer>
-		</>
-	);
-};
+const MainSectionContent = ({
+	mainCompleted,
+	setMainCompleted,
+}: {
+	mainCompleted: boolean;
+	setMainCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+}): JSX.Element => (
+	<AnimateSharedLayout>
+		<TypeWriter
+			text={mainPageContent.typingTextContent}
+			headerType={1}
+			setCompleted={setMainCompleted}
+		/>
+		<SubHeaderContainer className={mainCompleted ? 'visible' : 'hidden'}>
+			{mainCompleted && (
+				<RotatingText
+					preText={mainPageContent.rotatingTextContent.preText}
+					items={mainPageContent.rotatingTextContent.items}
+				/>
+			)}
+		</SubHeaderContainer>
+	</AnimateSharedLayout>
+);
 
 export default MainSectionContent;
