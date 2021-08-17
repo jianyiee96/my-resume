@@ -6,6 +6,8 @@ export const StyledAppContainer = styled.div`
 	height: 100vh;
 
 	overflow-y: scroll;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
 	-webkit-overflow-scrolling: touch;
 	scroll-snap-type: y proximity;
 `;

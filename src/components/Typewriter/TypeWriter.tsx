@@ -19,7 +19,7 @@ const TypeWriter = ({
 
 	useEffect(() => {
 		const interval = 100;
-		const completeInterval = 2000;
+		const completeInterval = 500;
 		if (idx <= text.length) {
 			setTimeout(() => {
 				setIdx((prev) => prev + 1);
