@@ -3,6 +3,10 @@ import { device } from './config/display';
 
 export const GlobalStyle = createGlobalStyle`
   html {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
   }
   ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
