@@ -15,10 +15,16 @@ import AboutSectionContent, {
 import SkillsetsSectionContent, {
 	SkillsetsSectionContentType,
 } from '../pages/App/section_contents/2_Skillsets/SkillsetsSectionContent';
-import ExperienceSectionContent from '../pages/App/section_contents/3_Experience/ExperienceSectionContent';
+import ExperienceSectionContent, {
+	ExperienceSectionContentType,
+} from '../pages/App/section_contents/3_Experience/ExperienceSectionContent';
 import ProjectsSectionContent from '../pages/App/section_contents/4_Projects/ProjectsSectionContent';
 import OthersSectionContent from '../pages/App/section_contents/5_Others/OthersSectionContent';
 import profilePicture from '../assets/jpgs/profile_picture.jpg';
+import logoBOS from '../assets/svgs/company/logoBOS.svg';
+import logoUOB from '../assets/svgs/company/logoUOB.svg';
+import logoNUS from '../assets/svgs/company/logoNUS.svg';
+import logoDBS from '../assets/svgs/company/logoDBS.svg';
 
 export const mainPageContent: MainContentType = {
 	typingTextContent: "Hi. I'm Bryan Thum",
@@ -31,6 +37,7 @@ export const mainPageContent: MainContentType = {
 type BaseContentType =
 	| AboutSectionContentType
 	| SkillsetsSectionContentType
+	| ExperienceSectionContentType
 	| undefined;
 
 export type ComponentPropType = {
@@ -289,7 +296,118 @@ export const appContent: ContentSectionType[] = [
 	{
 		id: 'tab-experience',
 		label: 'Past Experience',
-		subLabel: 'Past Experience',
+		subLabel: 'My previous employments',
+		content: {
+			sections: [
+				{
+					title: 'Bank of Singapore',
+					shortenedTitle: 'BOS',
+					subtitle: 'Jan 2021 - Jul 2021',
+					image: logoBOS,
+					contentListItems: [
+						{
+							itemTitle: 'Agile',
+							itemDescription:
+								'Actively contributed to discussions with team in SCRUM ceremonies',
+						},
+						{
+							itemTitle: 'Client Onboarding',
+							itemDescription:
+								'Independently developed core functionality with ReactJS and SpringBoot',
+						},
+						{
+							itemTitle: 'Alert Distribution',
+							itemDescription:
+								"Assisted in integrating ADE service to the team's infrastructure",
+						},
+						{
+							itemTitle: 'Testing',
+							itemDescription:
+								'Executed SIT & UAT for various functionalities, ' +
+								'ensuring validity of developed functions',
+						},
+					],
+				},
+				{
+					title: 'United Overseas Bank',
+					shortenedTitle: 'UOB',
+					subtitle: 'Jun 2020 - Aug 2020',
+					image: logoUOB,
+					contentListItems: [
+						{
+							itemTitle: 'Software Delivery',
+							itemDescription:
+								'Executed SIT & UAT for ATM Frontend software updates and ensured ' +
+								'smooth deployment using Rocket Aldon Lifecycle Manager',
+						},
+						{
+							itemTitle: 'Deployment',
+							itemDescription:
+								'Liaised with various stakeholders to carry out deployment of ' +
+								'software updates to UOB ATMs across Singapore',
+						},
+						{
+							itemTitle: 'VBA',
+							itemDescription:
+								'Developed multiple VBA programs to facilitate and automate the ' +
+								'daily processes within the department, ' +
+								'to reduce human error and improve efficiency',
+						},
+					],
+				},
+				{
+					title: 'National University of Singapore',
+					shortenedTitle: 'NUS',
+					subtitle: 'Aug 2019 - Dec2021',
+					image: logoNUS,
+					contentListItems: [
+						{
+							itemTitle: 'Tutorials',
+							itemDescription:
+								'Structured tutorial lessons for students undergoing this module',
+						},
+						{
+							itemTitle: 'Feedback',
+							itemDescription: 'Graded assignments and provided feedback',
+						},
+						{
+							itemTitle: 'Mentoring',
+							itemDescription:
+								'Coach and mentor providing guidance and feedback ' +
+								'to students to get them up to pace',
+						},
+					],
+				},
+				{
+					title: 'DBS Bank',
+					shortenedTitle: 'DBS',
+					subtitle: 'Dec 2015 - Feb 2016',
+					image: logoDBS,
+					contentListItems: [
+						{
+							itemTitle: 'VBA',
+							itemDescription:
+								'Modelled programs to carry out necessary tasks using VBA, ' +
+								'program tested and pushed out for usage, also achieved ' +
+								'department’s SPOT award for my contributions',
+						},
+						{
+							itemTitle: 'Excel',
+							itemDescription:
+								'Enhanced existing excel spreadsheets and implemented ' +
+								'automation and testing which reduced a substantial ' +
+								'amount of manual processing',
+						},
+						{
+							itemTitle: 'Reporting',
+							itemDescription:
+								'Facilitated reporting tasks and learnt the ' +
+								'necessary intricacies to take on the role independently',
+						},
+					],
+				},
+			],
+		},
 		component: ExperienceSectionContent,
 	},
 	{

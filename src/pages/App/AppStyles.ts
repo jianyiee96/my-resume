@@ -9,7 +9,7 @@ export const StyledAppContainer = styled.div`
 	overflow-x: hidden;
 	scroll-behavior: smooth;
 	-webkit-overflow-scrolling: touch;
-	scroll-snap-type: y proximity;
+	/* scroll-snap-type: y proximity; */
 `;
 
 const SharedSectionStyle = css`
