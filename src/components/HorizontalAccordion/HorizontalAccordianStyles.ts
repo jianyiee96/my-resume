@@ -49,7 +49,7 @@ export const SectionContainer = styled.div<{
 	flex-direction: column;
 	margin-right: 5px;
 	transition: transform 500ms ease;
-	z-index: 1;
+	z-index: 3;
 
 	transform: ${({ focused, active, shiftLeft }) =>
 		focused && !active
@@ -143,6 +143,7 @@ export const SectionContent = styled.div<{ active: boolean; isLast: boolean }>`
 	position: absolute;
 	width: 100%;
 	min-width: 20vw;
+	transition: opacity 1s ease;
 	.title-main,
 	.title-sub {
 		margin: 0 0 1rem 0;
@@ -164,6 +165,7 @@ export const SectionContent = styled.div<{ active: boolean; isLast: boolean }>`
 			? css`
 					z-index: 99;
 					visibility: visible;
+					opacity: 1;
 					${ContentListContainer} {
 						opacity: 1;
 					}
@@ -171,6 +173,7 @@ export const SectionContent = styled.div<{ active: boolean; isLast: boolean }>`
 			: css`
 					z-index: -1;
 					visibility: hidden;
+					opacity: 0;
 					${ContentListContainer} {
 						opacity: 0;
 					}
