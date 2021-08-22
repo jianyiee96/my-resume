@@ -11,6 +11,7 @@ import {
 	ContentListContainer,
 	ContentListItemContainer,
 	StyledBackdrop,
+	SectionImageOutter,
 } from './HorizontalAccordianStyles';
 import { device } from '../../config/display';
 
@@ -113,11 +114,13 @@ const Section = ({
 						onClick={() => handleClick()}
 						active={active}
 					>
-						<SectionImage
-							src={image}
-							aria-label="section-image"
-							active={active}
-						/>
+						<SectionImageOutter aria-label="section-image-outter">
+							<SectionImage
+								src={image}
+								aria-label="section-image"
+								active={active}
+							/>
+						</SectionImageOutter>
 					</SectionImageContainer>
 					<SectionName aria-label="section-name">
 						<h6>{matches ? shortenedTitle : title}</h6>

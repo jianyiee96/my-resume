@@ -13,11 +13,13 @@ export const StyledBackdrop = styled.div`
 export const SectionsMenu = styled.div`
 	display: flex;
 	justify-content: center;
-	padding: 3rem 10rem;
-	height: 100%;
+	padding: 3rem 20rem;
 	align-items: stretch;
 	box-sizing: border-box;
 	@media ${device.laptopL} {
+		padding: 3rem 10rem;
+	}
+	@media ${device.laptop} {
 		padding: 3rem 5rem;
 	}
 `;
@@ -43,8 +45,7 @@ export const SectionContainer = styled.div<{
 	shiftLeft: boolean;
 	focused: boolean;
 }>`
-	flex: 0 0 20vw;
-	height: 30vw;
+	flex: 0 0 calc(100% / 4);
 	display: flex;
 	flex-direction: column;
 	margin-right: 5px;
@@ -104,10 +105,8 @@ export const ContentListItemContainer = styled.div`
 
 export const SectionImageContainer = styled.div<{ active: boolean }>`
 	flex: 1;
-	display: flex;
-	align-items: center;
-	overflow: hidden;
-	justify-content: flex-start;
+	position: relative;
+	padding-top: calc(100% / 3 * 4);
 	${({ active }) =>
 		active &&
 		css`
@@ -117,10 +116,22 @@ export const SectionImageContainer = styled.div<{ active: boolean }>`
 		`}
 `;
 
+export const SectionImageOutter = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	justify-content: flex-start;
+`;
+
 export const SectionImage = styled.img<{ active: boolean }>`
-	flex: 1;
-	height: 150%;
-	width: 150%;
+	height: 200%;
+	width: 200%;
 	opacity: 0.7;
 	transition: opacity 500ms ease, height 500ms ease, width 500ms ease;
 	&&:hover {
@@ -136,6 +147,10 @@ export const SectionImage = styled.img<{ active: boolean }>`
 				opacity: 0.75;
 			}
 		`}
+	@media ${device.laptopL} {
+		height: 150%;
+		width: 150%;
+	}
 `;
 
 export const SectionContent = styled.div<{ active: boolean; isLast: boolean }>`
